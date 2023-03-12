@@ -1,6 +1,6 @@
 package com.mealjung.config.enums;
 
-import com.mealjung.common.utils.converter.EnumType;
+import com.mealjung.common.utils.enums.EnumType;
 import lombok.NoArgsConstructor;
 
 import java.util.*;

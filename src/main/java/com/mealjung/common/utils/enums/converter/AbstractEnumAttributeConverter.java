@@ -1,6 +1,7 @@
-package com.mealjung.common.utils.converter;
+package com.mealjung.common.utils.enums.converter;
 
-import com.mealjung.common.utils.converter.statics.EnumConverterUtils;
+import com.mealjung.common.utils.enums.EnumType;
+import com.mealjung.common.utils.enums.converter.statics.EnumConverterUtils;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.AttributeConverter;

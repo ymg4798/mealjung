@@ -1,6 +1,6 @@
-package com.mealjung.common.utils.converter.statics;
+package com.mealjung.common.utils.enums.converter.statics;
 
-import com.mealjung.common.utils.converter.EnumType;
+import com.mealjung.common.utils.enums.EnumType;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.util.StringUtils;

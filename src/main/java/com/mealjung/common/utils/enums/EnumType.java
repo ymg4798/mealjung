@@ -1,4 +1,4 @@
-package com.mealjung.common.utils.converter;
+package com.mealjung.common.utils.enums;
 
 public interface EnumType {
     String getCode();
