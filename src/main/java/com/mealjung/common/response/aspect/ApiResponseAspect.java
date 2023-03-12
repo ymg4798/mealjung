@@ -1,7 +1,7 @@
-package com.mealjung.favorite.aspect;
+package com.mealjung.common.response.aspect;
 
-import com.mealjung.favorite.controller.dto.FavoriteApiCommonResponse;
-import com.mealjung.favorite.controller.dto.FavoriteApiResponse;
+import com.mealjung.common.response.ApiResponse;
+import com.mealjung.common.response.CommonData;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -11,21 +11,21 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Aspect
 @Component
-public class FavoriteResponseAspect {
+public class ApiResponseAspect {
 
-    @Around("@annotation(com.mealjung.favorite.annotation.FavoriteResponse)")
-    public FavoriteApiResponse<Object> doResponse(ProceedingJoinPoint joinPoint) {
+    @Around("@within(com.mealjung.common.response.annotation.ApiResponseAnnotation)")
+    public ApiResponse<Object> doResponse(ProceedingJoinPoint joinPoint) {
 
         log.info("[ApiResponse] {}", joinPoint.getSignature());
 
-        FavoriteApiResponse<?> result = null;
+        ApiResponse<?> result = null;
         String message = "";
         String success = "N";
 
         try {
             Object proceedResult = joinPoint.proceed();
-            if (proceedResult instanceof FavoriteApiResponse) {
-                result = (FavoriteApiResponse<?>) proceedResult;
+            if (proceedResult instanceof ApiResponse) {
+                result = (ApiResponse<?>) proceedResult;
                 success = "Y";
             } else {
                 throw new IllegalStateException("반환 값이 올바르지 않습니다.");
@@ -37,12 +37,12 @@ public class FavoriteResponseAspect {
         }
 
         if (result == null) {
-            result = new FavoriteApiResponse<>();
+            result = new ApiResponse<>();
             success = "N";
         }
 
-        FavoriteApiCommonResponse common = FavoriteApiCommonResponse.create(message, success, success.equals("N") ? "Y" : "N");
+        CommonData common = CommonData.create(message, success, success.equals("N") ? "Y" : "N");
 
-        return FavoriteApiResponse.response(common, result.getData());
+        return ApiResponse.response(common, result.getData());
     }
 }

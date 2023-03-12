@@ -8,6 +8,7 @@ import com.mealjung.favorite.entity.Favorite;
 import com.mealjung.favorite.entity.FavoriteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class FavoriteService {
 
     private final FavoriteRepository favoriteRepository;
 
+    @Transactional
     public FavoriteSaveResponse save(FavoriteSaveRequest request) {
         validateDuplicationFavorite(request.getType(), request.getTypeId());
 

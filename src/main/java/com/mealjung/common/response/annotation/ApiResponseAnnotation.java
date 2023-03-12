@@ -1,4 +1,4 @@
-package com.mealjung.favorite.annotation;
+package com.mealjung.common.response.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,5 +7,5 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface FavoriteResponse {
+public @interface ApiResponseAnnotation {
 }
