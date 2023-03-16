@@ -51,9 +51,9 @@ public class FavoriteService {
         return FavoriteResponse.create(favorite);
     }
 
-    public List<FavoriteResponse> findByIdAllDesc(FavoriteCondition condition) {
+    /*public List<FavoriteResponse> findByIdAllDesc(FavoriteCondition condition) {
 
-    }
+    }*/
 
     @Transactional(readOnly = true)
     public Favorite findById(Long id) {

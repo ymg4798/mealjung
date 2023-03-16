@@ -1,6 +1,7 @@
 package com.mealjung.favorite.controller.dto;
 
 import com.mealjung.favorite.entity.Favorite;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -12,6 +13,7 @@ public class FavoriteResponse {
     private Boolean open;
     private Boolean delete;
 
+    @QueryProjection
     @Builder
     public FavoriteResponse(String type, Long typeId, String title, Boolean open, Boolean delete) {
         this.type = type;
