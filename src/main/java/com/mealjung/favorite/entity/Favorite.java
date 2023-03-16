@@ -3,6 +3,7 @@ package com.mealjung.favorite.entity;
 import com.mealjung.common.utils.enums.FavoriteType;
 import com.mealjung.common.utils.enums.converter.FavoriteTypeConverter;
 import com.mealjung.common.utils.enums.converter.statics.EnumConverterUtils;
+import com.mealjung.favorite.controller.dto.FavoriteUpdateRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,12 +33,15 @@ public class Favorite {
 
     private boolean open; // 공개 비공개 여부
 
+    private boolean delete; // 삭제여부 체크
+
     @Builder
     public Favorite(FavoriteType type, Long typeId, String title, boolean open) {
         this.type = type;
         this.typeId = typeId;
         this.title = title;
         this.open = open;
+        this.delete = false;
     }
 
     public static Favorite create(String type, Long typeId, String title, boolean open) {
@@ -45,8 +49,19 @@ public class Favorite {
                 .type(EnumConverterUtils.ofEnum(FavoriteType.class, type))
                 .typeId(typeId)
                 .title(title)
-                .open(false)
+                .open(open)
                 .build();
+    }
+
+    public void update(FavoriteUpdateRequest request) {
+        this.type = EnumConverterUtils.ofEnum(FavoriteType.class, request.getType());
+        this.typeId = request.getTypeId();
+        this.title = request.getTitle();
+        this.open = request.getOpen();
+    }
+
+    public void delete() {
+        this.delete = true;
     }
 }
 
