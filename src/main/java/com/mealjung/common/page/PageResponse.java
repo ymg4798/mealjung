@@ -16,6 +16,10 @@ public class PageResponse<T> {
         this.contents = page.getContent();
     }
 
+    public static <T> PageResponse<T> create(Page<T> page) {
+        return new PageResponse<>(page);
+    }
+
 }
 
 

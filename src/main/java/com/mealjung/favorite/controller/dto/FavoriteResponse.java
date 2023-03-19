@@ -1,5 +1,6 @@
 package com.mealjung.favorite.controller.dto;
 
+import com.mealjung.common.utils.enums.FavoriteType;
 import com.mealjung.favorite.entity.Favorite;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
@@ -9,25 +10,22 @@ import lombok.Getter;
 public class FavoriteResponse {
     private String type;
     private Long typeId;
-    private String title;
     private Boolean open;
     private Boolean delete;
 
     @QueryProjection
     @Builder
-    public FavoriteResponse(String type, Long typeId, String title, Boolean open, Boolean delete) {
-        this.type = type;
+    public FavoriteResponse(FavoriteType type, Long typeId, Boolean open, Boolean delete) {
+        this.type = type.getValue();
         this.typeId = typeId;
-        this.title = title;
         this.open = open;
         this.delete = delete;
     }
 
     public static FavoriteResponse create(Favorite favorite) {
         return FavoriteResponse.builder()
-                .type(favorite.getType().getValue())
+                .type(favorite.getType())
                 .typeId(favorite.getTypeId())
-                .title(favorite.getTitle())
                 .open(favorite.isOpen())
                 .delete(favorite.isDelete())
                 .build();

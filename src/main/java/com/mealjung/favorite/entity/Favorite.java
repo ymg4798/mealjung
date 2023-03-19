@@ -1,5 +1,7 @@
 package com.mealjung.favorite.entity;
 
+import com.mealjung.common.entity.BaseEntity;
+import com.mealjung.common.entity.BaseTimeEntity;
 import com.mealjung.common.utils.enums.FavoriteType;
 import com.mealjung.common.utils.enums.converter.FavoriteTypeConverter;
 import com.mealjung.common.utils.enums.converter.statics.EnumConverterUtils;
@@ -18,37 +20,37 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Favorite {
+public class Favorite extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Long userId;
 
     @Convert(converter = FavoriteTypeConverter.class)
     private FavoriteType type;
 
     private Long typeId;
 
-    private String title;
-
     private boolean open; // 공개 비공개 여부
 
     private boolean delete; // 삭제여부 체크
 
     @Builder
-    public Favorite(FavoriteType type, Long typeId, String title, boolean open) {
+    public Favorite(Long userId, FavoriteType type, Long typeId, boolean open) {
+        this.userId = userId;
         this.type = type;
         this.typeId = typeId;
-        this.title = title;
         this.open = open;
         this.delete = false;
     }
 
-    public static Favorite create(String type, Long typeId, String title, boolean open) {
+    public static Favorite create(Long userId, String type, Long typeId, boolean open) {
         return Favorite.builder()
+                .userId(userId)
                 .type(EnumConverterUtils.ofEnum(FavoriteType.class, type))
                 .typeId(typeId)
-                .title(title)
                 .open(open)
                 .build();
     }
@@ -56,7 +58,6 @@ public class Favorite {
     public void update(FavoriteUpdateRequest request) {
         this.type = EnumConverterUtils.ofEnum(FavoriteType.class, request.getType());
         this.typeId = request.getTypeId();
-        this.title = request.getTitle();
         this.open = request.getOpen();
     }
 

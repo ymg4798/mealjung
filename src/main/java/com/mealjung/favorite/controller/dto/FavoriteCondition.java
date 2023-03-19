@@ -6,11 +6,11 @@ import lombok.Getter;
 @Getter
 public class FavoriteCondition {
     private String type;
-    private String title;
+    private Integer page;
 
-    public FavoriteCondition(String type, String title) {
+    public FavoriteCondition(String type, Integer page) {
         this.type = type;
-        this.title = title;
+        this.page = page;
     }
 }
 

@@ -1,7 +1,9 @@
 package com.mealjung.favorite.controller;
 
+import com.mealjung.common.page.PageApiResponse;
 import com.mealjung.common.response.ApiResponse;
 import com.mealjung.common.response.annotation.ApiResponseAnnotation;
+import com.mealjung.favorite.controller.dto.FavoriteCondition;
 import com.mealjung.favorite.controller.dto.FavoriteResponse;
 import com.mealjung.favorite.controller.dto.FavoriteSaveRequest;
 import com.mealjung.favorite.controller.dto.FavoriteUpdateRequest;
@@ -26,9 +28,9 @@ public class FavoriteController {
         return ApiResponse.response(null, favoriteService.update(id, request));
     }
 
-    @PatchMapping("/favorite/record-deletion/{id}")
-    public ApiResponse<FavoriteResponse> recordDeletion(@PathVariable("id") Long id) {
-        return ApiResponse.response(null, favoriteService.recordDeletion(id));
+    @GetMapping("/favorites")
+    public ApiResponse<PageApiResponse<FavoriteResponse>> favorites(FavoriteCondition condition) {
+        return ApiResponse.response(null, PageApiResponse.create(favoriteService.findByIdAllDesc(condition)));
     }
 }
 
