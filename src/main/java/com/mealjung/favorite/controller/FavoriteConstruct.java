@@ -1,16 +1,16 @@
 package com.mealjung.favorite.controller;
 
-import com.mealjung.favorite.entity.Favorite;
 import com.mealjung.favorite.entity.FavoriteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 
 import static com.mealjung.favorite.entity.Favorite.create;
 
+@Profile("local")
 @RequiredArgsConstructor
 @Component
 public class FavoriteConstruct {

@@ -1,5 +1,6 @@
 package com.mealjung.favorite.controller.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,14 @@ public class FavoriteUpdateRequest {
     private Long typeId;
     @NotNull(message = "공개 비공개 여부를 선택해주세요.")
     private Boolean open;
+
+    @Builder
+    public FavoriteUpdateRequest(Long userId, String type, Long typeId, Boolean open) {
+        this.userId = userId;
+        this.type = type;
+        this.typeId = typeId;
+        this.open = open;
+    }
 }
 
 
