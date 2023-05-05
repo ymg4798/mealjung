@@ -18,7 +18,7 @@ public class SampleController {
     }
 
     @PutMapping("/sample/{id}")
-    public Long update(@PathVariable("id") Long id,@RequestBody SampleUpdateRequest request) {
+    public Long update(@PathVariable("id") Long id, @RequestBody SampleUpdateRequest request) {
         return sampleService.update(id, request);
     }
 

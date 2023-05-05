@@ -1,1 +1,3 @@
 rootProject.name = 'mealjung'
+include 'mealjung-api-server'
+include 'mealjung-core'
