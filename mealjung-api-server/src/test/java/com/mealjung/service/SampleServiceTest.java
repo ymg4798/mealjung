@@ -1,6 +1,6 @@
 package com.mealjung.service;
 
-import com.mealjung.sample.entity.Sample;
+import com.mealjung.entity.Sample;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

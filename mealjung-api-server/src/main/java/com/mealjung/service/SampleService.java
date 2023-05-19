@@ -1,7 +1,7 @@
 package com.mealjung.service;
 
-import com.mealjung.sample.entity.Sample;
-import com.mealjung.sample.entity.SampleRepository;
+import com.mealjung.entity.Sample;
+import com.mealjung.repository.SampleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
