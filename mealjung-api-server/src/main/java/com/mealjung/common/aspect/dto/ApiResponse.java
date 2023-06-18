@@ -1,4 +1,4 @@
-package com.mealjung.common.response;
+package com.mealjung.common.aspect.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

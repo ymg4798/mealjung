@@ -8,8 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 
-import static com.mealjung.entity.Favorite.create;
-
 @Profile("local")
 @RequiredArgsConstructor
 @Component
@@ -21,7 +19,7 @@ public class FavoriteConstruct {
     @Transactional
     @PostConstruct
     public void initFavorite() {
-        for (int i = 1; i <= 11; i++) {
+        /*for (int i = 1; i <= 11; i++) {
             favoriteRepository.save(create(1L, "리뷰", (long) i, false));
         }
 
@@ -31,6 +29,6 @@ public class FavoriteConstruct {
 
         for (int i = 1; i <= 22; i++) {
             favoriteRepository.save(create(1L, "메뉴", (long) i, false));
-        }
+        }*/
     }
 }

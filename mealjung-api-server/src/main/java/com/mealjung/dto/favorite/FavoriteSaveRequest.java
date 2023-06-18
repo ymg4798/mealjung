@@ -1,5 +1,8 @@
 package com.mealjung.dto.favorite;
 
+import com.mealjung.common.converter.utils.EnumConverterUtils;
+import com.mealjung.common.enums.FavoriteType;
+import com.mealjung.entity.Favorite;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,12 +21,13 @@ public class FavoriteSaveRequest {
     @NotNull(message = "공개 비공개 여부를 선택해주세요.")
     private Boolean open;
 
-    @Builder
-    public FavoriteSaveRequest(Long userId, String type, Long typeId, Boolean open) {
-        this.userId = userId;
-        this.type = type;
-        this.typeId = typeId;
-        this.open = open;
+    public Favorite toEntity() {
+        return Favorite.builder()
+                .userId(userId)
+                .type(EnumConverterUtils.ofEnum(FavoriteType.class, type))
+                .typeId(typeId)
+                .open(open)
+                .build();
     }
 }
 

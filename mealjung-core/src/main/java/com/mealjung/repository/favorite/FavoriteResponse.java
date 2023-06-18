@@ -1,4 +1,4 @@
-package com.mealjung.dto.favorite;
+package com.mealjung.repository.favorite;
 
 import com.mealjung.common.enums.FavoriteType;
 import com.mealjung.entity.Favorite;

@@ -1,4 +1,4 @@
-package com.mealjung.common.response;
+package com.mealjung.common.aspect.dto;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -14,13 +14,5 @@ public class CommonData {
         this.message = message;
         this.success = success;
         this.errorYn = errorYn;
-    }
-
-    public static CommonData create(String message, String success, String errorYn) {
-        return CommonData.builder()
-                .message(message)
-                .success(success)
-                .errorYn(errorYn)
-                .build();
     }
 }

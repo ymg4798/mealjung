@@ -3,7 +3,6 @@ package com.mealjung.entity;
 import com.mealjung.common.converter.FavoriteTypeConverter;
 import com.mealjung.common.converter.utils.EnumConverterUtils;
 import com.mealjung.common.enums.FavoriteType;
-import com.mealjung.dto.favorite.FavoriteUpdateRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,19 +43,10 @@ public class Favorite extends BaseTimeEntity {
         this.delete = false;
     }
 
-    public static Favorite create(Long userId, String type, Long typeId, boolean open) {
-        return Favorite.builder()
-                .userId(userId)
-                .type(EnumConverterUtils.ofEnum(FavoriteType.class, type))
-                .typeId(typeId)
-                .open(open)
-                .build();
-    }
-
-    public void update(FavoriteUpdateRequest request) {
-        this.type = EnumConverterUtils.ofEnum(FavoriteType.class, request.getType());
-        this.typeId = request.getTypeId();
-        this.open = request.getOpen();
+    public void update(String type, Long typeId, boolean open) {
+        this.type = EnumConverterUtils.ofEnum(FavoriteType.class, type);
+        this.typeId = typeId;
+        this.open = open;
     }
 
     public void delete() {

@@ -3,8 +3,7 @@ package com.mealjung.query;
 import com.mealjung.common.converter.utils.EnumConverterUtils;
 import com.mealjung.common.enums.FavoriteType;
 import com.mealjung.config.querydsl.QuerydslRepositorySupport;
-import com.mealjung.dto.favorite.FavoriteCondition;
-import com.mealjung.dto.favorite.FavoriteResponse;
+import com.mealjung.repository.favorite.FavoriteResponse;
 import com.mealjung.dto.favorite.QFavoriteResponse;
 import com.mealjung.entity.Favorite;
 import com.mealjung.repository.FavoriteRepositoryCustom;
@@ -25,7 +24,7 @@ public class FavoriteRepositoryImpl extends QuerydslRepositorySupport implements
     }
 
     @Override
-    public Page<FavoriteResponse> search(FavoriteCondition condition, Pageable pageable) {
+    public Page<FavoriteResponse> search(String type, Pageable pageable) {
         return applyPagination(pageable,
                 contentQuery -> contentQuery
                         .select(new QFavoriteResponse(
@@ -35,13 +34,13 @@ public class FavoriteRepositoryImpl extends QuerydslRepositorySupport implements
                                 favorite.delete))
                         .from(favorite)
                         .where(
-                                favoriteTypeEq(condition.getType())
+                                favoriteTypeEq(type)
                         )
         ,countQuery -> countQuery
                         .select(favorite.count())
                         .from(favorite)
                         .where(
-                                favoriteTypeEq(condition.getType())
+                                favoriteTypeEq(type)
                         ));
     }
 
