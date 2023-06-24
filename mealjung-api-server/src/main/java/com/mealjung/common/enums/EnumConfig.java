@@ -1,4 +1,4 @@
-package com.mealjung.config.enums;
+package com.mealjung.common.enums;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

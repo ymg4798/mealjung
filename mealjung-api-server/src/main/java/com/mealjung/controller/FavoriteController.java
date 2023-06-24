@@ -8,6 +8,7 @@ import com.mealjung.dto.favorite.FavoriteUpdateRequest;
 import com.mealjung.repository.favorite.FavoriteResponse;
 import com.mealjung.service.FavoriteService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 @ApiResponseAnnotation
@@ -28,8 +29,8 @@ public class FavoriteController {
     }
 
     @GetMapping("/favorites")
-    public ApiResponse<PageApiResponse<FavoriteResponse>> favorites(FavoriteCondition condition) {
-        return ApiResponse.response(null, PageApiResponse.create(favoriteService.findByIdAllDesc(condition.getType(), condition.getPage())));
+    public ApiResponse<Page<FavoriteResponse>> favorites(FavoriteCondition condition) {
+        return ApiResponse.response(null, favoriteService.findByIdAllDesc(condition.getType(), condition.getPage()));
     }
 }
 

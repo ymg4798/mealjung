@@ -1,4 +1,4 @@
-package com.mealjung.config.enums;
+package com.mealjung.common.enums;
 
 import com.mealjung.common.utils.enums.EnumType;
 import lombok.NoArgsConstructor;
