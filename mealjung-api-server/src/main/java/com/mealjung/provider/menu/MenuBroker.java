@@ -12,9 +12,9 @@ import java.util.List;
 
 /**
  * TODO
- * 지난번 미팅 때 얘기한 api-server 측과 core 쪽을 연결하는 서비스
- * 메뉴 때문에 임시로 만들어 놓았으니 이름 정하시면 바꾸세요
- * provider 를 통한 조회는 그냥 controller 로 빼도 될 듯
+ * 지난번 미팅 때 얘기한 api-server 측 서비스
+ * 메뉴 때문에 임시로 만들어 놓았으니 나중에 교체해주세요
+ * 조회는 그냥 controller 에서 아래 provider 를 직접 호출해도 될 듯
  */
 @Service
 public class MenuBroker {
