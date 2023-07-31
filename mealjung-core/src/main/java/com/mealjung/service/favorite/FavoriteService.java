@@ -1,10 +1,10 @@
-package com.mealjung.service;
+package com.mealjung.service.favorite;
 
 import com.mealjung.common.enums.FavoriteType;
 import com.mealjung.common.page.PageRequest;
 import com.mealjung.repository.favorite.FavoriteResponse;
-import com.mealjung.entity.Favorite;
-import com.mealjung.repository.FavoriteRepository;
+import com.mealjung.entity.favorite.Favorite;
+import com.mealjung.repository.favorite.FavoriteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-@Transactional(readOnly = true)
+@Transactional
 @RequiredArgsConstructor
 @Service
 public class FavoriteService {
@@ -25,7 +25,6 @@ public class FavoriteService {
      * 3. 업데이트 false
      * 4. 200번 클릭하면 200개 쌓인다.
      */
-    @Transactional
     public FavoriteResponse save(Favorite favorite) {
         Long userId = favorite.getUserId();
         FavoriteType type = favorite.getType();
@@ -42,25 +41,10 @@ public class FavoriteService {
         return FavoriteResponse.create(favorite);
     }
 
-    @Transactional
     public FavoriteResponse update(Long id, String type, Long typeId, Boolean open) {
-        Favorite favorite = findById(id);
+        Favorite favorite = favoriteRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당하는 좋아요 정보가 없습니다. id : " + id));
         favorite.update(type, typeId, open);
         return FavoriteResponse.create(favorite);
     }
-
-    /**
-     * 현재 좋아요 했던 내용도 보여준다.
-     */
-    public Page<FavoriteResponse> findByIdAllDesc(String type, Integer page) {
-        return favoriteRepository.search(type, new PageRequest(page).of());
-    }
-
-    public Favorite findById(Long id) {
-        return favoriteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("좋아요 데이터가 존재하지 않습니다. id : " + id));
-    }
-
 }
-
-

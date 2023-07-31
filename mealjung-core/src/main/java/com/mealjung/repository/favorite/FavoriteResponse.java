@@ -1,7 +1,7 @@
 package com.mealjung.repository.favorite;
 
 import com.mealjung.common.enums.FavoriteType;
-import com.mealjung.entity.Favorite;
+import com.mealjung.entity.favorite.Favorite;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
 import lombok.Getter;

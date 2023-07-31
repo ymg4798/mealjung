@@ -23,7 +23,13 @@ public class MenuModel {
     }
 
     public static Menu create(String name, String description, int price, Long restaurantId, Long imageCode) {
-        return new Menu(name, description, price, restaurantId, imageCode);
+        return Menu.builder()
+                .name(name)
+                .description(description)
+                .price(price)
+                .restaurantId(restaurantId)
+                .imageCode(imageCode)
+                .build();
     }
 
     public String getName() {

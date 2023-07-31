@@ -1,4 +1,4 @@
-package com.mealjung.entity;
+package com.mealjung.entity.common;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
@@ -17,7 +17,7 @@ public class BaseTimeEntity {
 
     @CreatedDate
     @Column(updatable = false)
-    private LocalDateTime regDate;
+    private LocalDateTime createdDate;
 
     @LastModifiedDate
     private LocalDateTime modifiedDate;

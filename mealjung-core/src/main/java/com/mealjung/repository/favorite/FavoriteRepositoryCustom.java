@@ -1,4 +1,4 @@
-package com.mealjung.repository;
+package com.mealjung.repository.favorite;
 
 import com.mealjung.repository.favorite.FavoriteResponse;
 import org.springframework.data.domain.Page;

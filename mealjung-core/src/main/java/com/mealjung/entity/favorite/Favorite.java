@@ -1,8 +1,10 @@
-package com.mealjung.entity;
+package com.mealjung.entity.favorite;
 
 import com.mealjung.common.converter.FavoriteTypeConverter;
 import com.mealjung.common.converter.utils.EnumConverterUtils;
 import com.mealjung.common.enums.FavoriteType;
+import com.mealjung.entity.common.BaseTimeEntity;
+import com.mealjung.model.favorite.FavoriteModel;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -51,6 +53,10 @@ public class Favorite extends BaseTimeEntity {
 
     public void delete() {
         this.delete = true;
+    }
+
+    public FavoriteModel toDomainModel() {
+        return new FavoriteModel(userId, type, typeId, open);
     }
 }
 
