@@ -2,6 +2,7 @@ package com.mealjung.model.favorite;
 
 import com.mealjung.common.enums.FavoriteType;
 import com.mealjung.entity.favorite.Favorite;
+import com.querydsl.core.annotations.QueryProjection;
 
 public class FavoriteModel {
 
@@ -13,6 +14,7 @@ public class FavoriteModel {
 
     private final boolean open;
 
+    @QueryProjection
     public FavoriteModel(Long userId, FavoriteType type, Long typeId, boolean open) {
         this.userId = userId;
         this.type = type;

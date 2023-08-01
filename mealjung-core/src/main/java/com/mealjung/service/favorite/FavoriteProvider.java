@@ -2,8 +2,8 @@ package com.mealjung.service.favorite;
 
 import com.mealjung.common.page.PageRequest;
 import com.mealjung.entity.favorite.Favorite;
+import com.mealjung.model.favorite.FavoriteModel;
 import com.mealjung.repository.favorite.FavoriteRepository;
-import com.mealjung.repository.favorite.FavoriteResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -16,12 +16,13 @@ public class FavoriteProvider {
 
     private final FavoriteRepository favoriteRepository;
 
-    public Page<FavoriteResponse> findByIdAllDesc(String type, Integer page) {
+    public Page<FavoriteModel> findByIdAllDesc(String type, Integer page) {
         return favoriteRepository.search(type, new PageRequest(page).of());
     }
 
-    public Favorite findById(Long id) {
+    public FavoriteModel findById(Long id) {
         return favoriteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("좋아요 데이터가 존재하지 않습니다. id : " + id));
+                .orElseThrow(() -> new IllegalArgumentException("좋아요 데이터가 존재하지 않습니다. id : " + id))
+                .toDomainModel();
     }
 }

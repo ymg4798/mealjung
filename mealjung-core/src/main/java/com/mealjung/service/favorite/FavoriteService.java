@@ -1,12 +1,10 @@
 package com.mealjung.service.favorite;
 
 import com.mealjung.common.enums.FavoriteType;
-import com.mealjung.common.page.PageRequest;
-import com.mealjung.repository.favorite.FavoriteResponse;
 import com.mealjung.entity.favorite.Favorite;
+import com.mealjung.model.favorite.FavoriteModel;
 import com.mealjung.repository.favorite.FavoriteRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +23,7 @@ public class FavoriteService {
      * 3. 업데이트 false
      * 4. 200번 클릭하면 200개 쌓인다.
      */
-    public FavoriteResponse save(Favorite favorite) {
+    public FavoriteModel save(Favorite favorite) {
         Long userId = favorite.getUserId();
         FavoriteType type = favorite.getType();
         Long typeId = favorite.getTypeId();
@@ -38,13 +36,13 @@ public class FavoriteService {
 
         favoriteRepository.save(favorite);
 
-        return FavoriteResponse.create(favorite);
+        return favorite.toDomainModel();
     }
 
-    public FavoriteResponse update(Long id, String type, Long typeId, Boolean open) {
+    public FavoriteModel update(Long id, String type, Long typeId, Boolean open) {
         Favorite favorite = favoriteRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 좋아요 정보가 없습니다. id : " + id));
         favorite.update(type, typeId, open);
-        return FavoriteResponse.create(favorite);
+        return favorite.toDomainModel();
     }
 }

@@ -1,11 +1,11 @@
 package com.mealjung.repository.favorite;
 
-import com.mealjung.repository.favorite.FavoriteResponse;
+import com.mealjung.model.favorite.FavoriteModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface FavoriteRepositoryCustom {
-    Page<FavoriteResponse> search(String type, Pageable pageable);
+    Page<FavoriteModel> search(String type, Pageable pageable);
 }
 
 
