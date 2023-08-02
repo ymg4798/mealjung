@@ -25,9 +25,9 @@ public class FavoriteController {
     public ApiResponse<FavoriteModel> update(@PathVariable("id") Long id, @RequestBody FavoriteUpdateRequest request) {
         return ApiResponse.response(null, favoriteService.update(id, request.getType(), request.getTypeId(), request.getOpen()));
     }
-
-/*    @GetMapping("/favorites")
-    public ApiResponse<Page<FavoriteResponse>> favorites(FavoriteCondition condition) {
+/*
+    @GetMapping("/favorites")
+    public ApiResponse<Page<FavoriteModel>> favorites(FavoriteCondition condition) {
         return ApiResponse.response(null, favoriteService.findByIdAllDesc(condition.getType(), condition.getPage()));
     }*/
 }
