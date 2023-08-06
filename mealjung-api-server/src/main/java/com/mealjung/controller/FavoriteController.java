@@ -17,8 +17,8 @@ public class FavoriteController {
     private final FavoriteService favoriteService;
 
     @PostMapping("/favorite")
-    public ApiResponse<FavoriteModel> save(@RequestBody FavoriteSaveRequest request) {
-        return ApiResponse.response(null, favoriteService.save(request.toEntity()));
+    public ApiResponse<FavoriteModel> create(@RequestBody FavoriteSaveRequest request) {
+        return ApiResponse.response(null, favoriteService.create(request.toEntity()));
     }
 
     @PutMapping("/favorite/{id}")

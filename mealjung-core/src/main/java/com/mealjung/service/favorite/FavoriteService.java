@@ -22,11 +22,15 @@ public class FavoriteService {
      * 2. 취소 하면 true업데이트
      * 3. 업데이트 false
      * 4. 200번 클릭하면 200개 쌓인다.
+     * 5. 구조 바꿔야 할거같음 ...
      */
-    public FavoriteModel save(Favorite favorite) {
-        Long userId = favorite.getUserId();
-        FavoriteType type = favorite.getType();
-        Long typeId = favorite.getTypeId();
+    public FavoriteModel create(Long userId, FavoriteType type, Long typeId, boolean open) {
+        Favorite favorite = Favorite.builder()
+                .userId(userId)
+                .type(type)
+                .typeId(typeId)
+                .open(open)
+                .build();
 
         Optional<Favorite> findFavorite = favoriteRepository.findByUserIdAndTypeAndTypeId(userId, type, typeId);
 
