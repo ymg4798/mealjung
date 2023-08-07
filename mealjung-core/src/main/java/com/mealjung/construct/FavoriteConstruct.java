@@ -1,6 +1,6 @@
 package com.mealjung.construct;
 
-import com.mealjung.repository.FavoriteRepository;
+import com.mealjung.repository.favorite.FavoriteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;

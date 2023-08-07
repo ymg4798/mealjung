@@ -1,18 +1,19 @@
 package com.mealjung.entity.menu;
 
+import com.mealjung.entity.common.BaseTimeEntity;
 import com.mealjung.model.menu.MenuModel;
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name="menu")
-@Where(clause = "deletedAt != null")
-@NoArgsConstructor
-public class Menu {
+public class Menu extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,29 +28,15 @@ public class Menu {
     @Column
     private Long imageCode;
     @Column
-    private LocalDateTime createdAt;
-    @Column
-    private LocalDateTime updatedAt;
-    @Column
-    private LocalDateTime deletedAt;
+    private LocalDateTime deletedDate;
 
+    @Builder
     public Menu(String name, String description, int price, Long restaurantId, Long imageCode) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.restaurantId = restaurantId;
         this.imageCode = imageCode;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = null;
-        this.deletedAt = null;
-    }
-
-    public Menu(MenuModel model){
-        this.name = model.getName();
-        this.description = model.getDescription();
-        this.price = model.getPrice();
-        this.restaurantId = model.getRestaurantId();
-        this.imageCode = model.getImageCode();
     }
 
     public MenuModel toDomainModel(){

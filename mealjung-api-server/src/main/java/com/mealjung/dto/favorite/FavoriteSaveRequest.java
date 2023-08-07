@@ -2,8 +2,7 @@ package com.mealjung.dto.favorite;
 
 import com.mealjung.common.converter.utils.EnumConverterUtils;
 import com.mealjung.common.enums.FavoriteType;
-import com.mealjung.entity.Favorite;
-import lombok.Builder;
+import com.mealjung.entity.favorite.Favorite;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

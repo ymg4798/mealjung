@@ -1,4 +1,4 @@
-package com.mealjung.entity;
+package com.mealjung.entity.common;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;

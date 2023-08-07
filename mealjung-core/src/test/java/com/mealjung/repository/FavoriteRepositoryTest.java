@@ -1,6 +1,7 @@
 package com.mealjung.repository;
 
-import com.mealjung.entity.Favorite;
+import com.mealjung.entity.favorite.Favorite;
+import com.mealjung.repository.favorite.FavoriteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,8 @@ import java.util.List;
 @SpringBootTest
 class FavoriteRepositoryTest {
 
-    @Autowired FavoriteRepository favoriteRepository;
+    @Autowired
+    FavoriteRepository favoriteRepository;
 
     @Test
     public void 테스트() {

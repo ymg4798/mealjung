@@ -1,7 +1,7 @@
-package com.mealjung.repository;
+package com.mealjung.repository.favorite;
 
 import com.mealjung.common.enums.FavoriteType;
-import com.mealjung.entity.Favorite;
+import com.mealjung.entity.favorite.Favorite;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
